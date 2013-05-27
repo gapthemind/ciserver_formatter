@@ -41,11 +41,16 @@ module CiserverFormatter
 
     def example_started(example)
       super
+      @start_time = Time.now
+    end
+
+    def write_output(description, status)
+      output.puts "#{current_indentation}<span class=\"status\">#{description}<span class=\"time\">#{Time.now - @start_time}</span></span><br />"
     end
 
     def example_pending(example)
       super
-      output.puts "#{current_indentation}#{example.description}"
+      write_output example.description, :pending
       @status = :pending if @status == :pass
       @pending_count += 1
       update_progress
@@ -53,7 +58,7 @@ module CiserverFormatter
 
     def example_failed(example)
       super
-      output.puts "#{current_indentation}#{example.description}"
+      write_output example.description, :failed
       @status = :failed
       @failed_count += 1
       update_progress
@@ -61,7 +66,7 @@ module CiserverFormatter
 
     def example_passed(example)
       super
-      output.puts "#{current_indentation}#{example.description}"
+      write_output example.description, :passed
       @passed_count += 1
       update_progress
     end
@@ -76,7 +81,7 @@ module CiserverFormatter
 
     private
     def current_indentation
-      '  ' * @group_level
+      '&nsbp;' * @group_level
     end
 
     def total_count

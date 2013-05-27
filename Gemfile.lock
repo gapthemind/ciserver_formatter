@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    ciserver_formatter (0.0.1)
+    ciserver_formatter (0.0.2)
       rspec (~> 2.0)
 
 GEM
