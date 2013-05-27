@@ -10,7 +10,7 @@ Gem::Specification.new do |gem|
   gem.email         = ["diego.alonso@adaptfms.com"]
   gem.description   = %q{Formatter for AdaptFMS CI server}
   gem.summary       = %q{Formatter used when running rspec from the AdaptFMS CI server}
-  gem.homepage      = "http://www.adaptfms.com"
+  gem.homepage      = "http://www.gapthemind.net"
 
   gem.files         = `git ls-files`.split($/)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
