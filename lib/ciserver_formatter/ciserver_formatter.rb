@@ -30,7 +30,7 @@ module CiserverFormatter
 
     def example_group_started(example_group)
       super
-      output.puts "#{current_indentation}#{example_group.description}"
+      output.puts "#{current_indentation}<span>#{example_group.description}</span><br />"
       @group_level += 1
     end
 
@@ -45,7 +45,7 @@ module CiserverFormatter
     end
 
     def write_output(description, status)
-      output.puts "#{current_indentation}<span class=\"status\">#{description}<span class=\"time\">#{Time.now - @start_time}</span></span><br />"
+      output.puts "#{current_indentation}<span class=\"#{status}\">#{description}<span class=\"time\">#{Time.now - @start_time}</span></span><br />"
     end
 
     def example_pending(example)
@@ -81,7 +81,7 @@ module CiserverFormatter
 
     private
     def current_indentation
-      '&nsbp;' * @group_level
+      '&nsbp;&nsbp;' * @group_level
     end
 
     def total_count
